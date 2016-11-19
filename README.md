@@ -1,10 +1,9 @@
 # kitten-messenger
 Proof of concept for a Facebook Messenger bot.
 
-## Facebook - Kimbot
-![Kimbot](screenshots/demo_01.png)
-
-Try messaging Kimbot yourself!
 ```
+<any_message> - Repeats back to you.
 kitten <width> <height> - Gives you a kitty-image for your troubles.
 ```
+
+![Kimbot](screenshots/demo_01.png)
