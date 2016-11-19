@@ -1,11 +1,12 @@
 'use strict';
 
-var request = require('request');
+var request = require('request'),
+    config = require('../config/config');
 
 // generic function sending messages
 var sendMessage = function(recipientId, message) {
   request({
-    url: 'https://graph.facebook.com/v2.6/me/messages',
+    url: config.baseUrls.facebookGraph + '/v2.6/me/messages',
     qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
     method: 'POST',
     json: {
@@ -27,7 +28,7 @@ var kittenMessage = function(recipientId, text) {
   var values = text.split(' ');
   if (values.length === 3 && values[0] === 'kitten') {
     if (Number(values[1]) > 0 && Number(values[2]) > 0) {
-      var imageUrl = "https://placekitten.com/" + Number(values[1]) + "/" + Number(values[2]);
+      var imageUrl = config.baseUrls.placeKitten + Number(values[1]) + "/" + Number(values[2]);
       var message = {
         "attachment": {
           "type": "template",

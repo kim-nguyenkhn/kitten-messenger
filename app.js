@@ -5,6 +5,7 @@ var bodyParser = require('body-parser');
 var request = require('request');
 var app = express();
 var routes = require('./routes/index');
+var config = require('./config/config');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -14,7 +15,7 @@ app.listen((process.env.PORT || 3000));
 
 // very basic keepalive ping
 setInterval(function() {
-  request('https://kitten-messenger.herokuapp.com/', function(error, response, body) {
+  request(config.baseUrls.herokuApp, function(error, response, body) {
     if (!error && response.statusCode === 200) {
       console.log('Pong');
     }

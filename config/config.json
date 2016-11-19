@@ -1,0 +1,7 @@
+{
+  "baseUrls": {
+    "herokuApp": "https://kitten-messenger.herokuapp.com/",
+    "facebookGraph": "https://graph.facebook.com/",
+    "placeKitten": "https://placekitten.com/"
+  }
+}

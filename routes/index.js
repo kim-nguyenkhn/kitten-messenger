@@ -2,7 +2,8 @@
 
 var express = require('express'),
     router = express.Router(),
-    messageUtil = require('../util/messageUtil');
+    messageUtil = require('../util/messageUtil'),
+    config = require('../config/config');
 
 // middleware that is specific to this router
 router.use(function timeLog (req, res, next) {
