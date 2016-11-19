@@ -3,9 +3,14 @@
   "version": "1.0.0",
   "description": "TestBot Server App",
   "main": "index.js",
+  "engines": {
+    "node": "5.11.1",
+    "npm": "3.8.6"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node app.js",
+    "jshint": "jshint --exclude node_modules ."
   },
   "author": "Adam Jodlowski",
   "license": "ISC",
@@ -13,5 +18,8 @@
     "body-parser": "^1.15.0",
     "express": "^4.13.4",
     "request": "^2.72.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.9.4"
   }
 }
