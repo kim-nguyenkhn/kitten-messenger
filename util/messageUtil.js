@@ -1,6 +1,7 @@
 'use strict';
 
 var request = require('request'),
+    __ = require('underscore'),
     config = require('../config/config'),
     faqCategories = require('../config/faq').faqCategories,
     natural = require('natural'),
@@ -86,7 +87,7 @@ var faqMessage = function(recipientId, text) {
     __.each(arr, function(elementObj) {
       classifier.addDocument(elementObj.title, category);
     });
-  };
+  });
   classifier.train();
   // the classifier is saved to the classifier.json file!
   classifier.save('classifier.json', function(err, classifier) {
@@ -101,7 +102,7 @@ var faqMessage = function(recipientId, text) {
 
   // ask back
   var message = "";
-  message += "Is this a question about: "+classifcation+"?";
+  message += "Is this a question about: "+classification+"?";
 
   sendMessage(recipientId, message);
 };
