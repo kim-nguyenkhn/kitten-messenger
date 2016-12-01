@@ -63,6 +63,7 @@ var kittenMessage = function(recipientId, text) {
 };
 
 // see https://dzone.com/articles/using-natural-nlp-module for documentation on 'Natural' module
+// can also add Labels & Notes
 var faqMessage = function(recipientId, text) {
   text = text || "";
   var logObj = {};
@@ -70,6 +71,7 @@ var faqMessage = function(recipientId, text) {
   // breaks text up into array of strings, and stems them all
   // takes param whether to ignore "stop words" (e.g., "I", "to", "at")
   var stemmer = natural.PorterStemmer || natural.LancasterStemmer;    // should investigate which performs better
+  stemmer.attach();
   var stems = text.tokenizeAndStem(false);
   logObj.stems = stems;
 
