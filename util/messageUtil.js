@@ -91,20 +91,18 @@ var faqMessage = function(recipientId, text) {
     });
   });
   classifier.train();
-  // the classifier is saved to the classifier.json file!
-  classifier.save('classifier.json', function(err, classifier) {
-    if (err) {
-      console.log(err);
-    }
-  });
+  // classifier.save('classifier.json', function(err, classifier) {
+  //   if (err) {
+  //     console.log(err);
+  //   }
+  // });
   var classification = classifier.classify(text);
   logObj.classification = classification;
 
   console.log(logObj);
 
   // ask back
-  var message = "";
-  message += "Is this a question about: "+classification+"?";
+  var message = "Is this a question about: "+classification+"?";
 
   sendMessage(recipientId, message);
 };
