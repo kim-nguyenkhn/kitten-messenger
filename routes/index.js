@@ -27,7 +27,8 @@ router.get('/webhook', function (req, res) {
       var event = events[i];
       if (event.message && event.message.text) {
         if (!messageUtil.kittenMessage(event.sender.id, event.message.text)) {
-            messageUtil.sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+            // messageUtil.sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+            messageUtil.faqMessage(event.sender.id, event.message.text);
         }
       } else if (event.postback) {
         console.log("Postback received: " + JSON.stringify(event.postback));

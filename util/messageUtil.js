@@ -1,7 +1,10 @@
 'use strict';
 
 var request = require('request'),
-    config = require('../config/config');
+    config = require('../config/config'),
+    faqCategories = require('../config/faq').faqCategories,
+    natural = require('natural'),
+    TfIdf = natural.TfIdf;
 
 // generic function sending messages
 var sendMessage = function(recipientId, message) {
@@ -58,7 +61,53 @@ var kittenMessage = function(recipientId, text) {
   return false;
 };
 
+// see https://dzone.com/articles/using-natural-nlp-module for documentation on 'Natural' module
+var faqMessage = function(recipientId, text) {
+  text = text || "";
+  var logObj = {};
+
+  // breaks text up into array of strings, and stems them all
+  // takes param whether to ignore "stop words" (e.g., "I", "to", "at")
+  var stemmer = natural.PorterStemmer || natural.LancasterStemmer;    // should investigate which performs better
+  var stems = text.tokenizeAndStem(false);
+  logObj.stems = stems;
+
+  // weights all words in text by importance
+  logObj.tfidf = [];
+  var tfidf = new TfIdf();
+  tfidf.addDocument(text);
+  tfidf.listTerms(0).forEach(function(item) {
+    logObj.tfidf.push({ term: item.term, tfidf: item.tfidf });
+  });
+
+  // two fundamental steps: training & classification
+  var classifier = new natural.BayesClassifier();
+  __.each(faqCategories, function(arr, category) {
+    __.each(arr, function(elementObj) {
+      classifier.addDocument(elementObj.title, category);
+    });
+  };
+  classifier.train();
+  // the classifier is saved to the classifier.json file!
+  classifier.save('classifier.json', function(err, classifier) {
+    if (err) {
+      console.log(err);
+    }
+  });
+  var classification = classifier.classify(text);
+  logObj.classification = classification;
+
+  console.log(logObj);
+
+  // ask back
+  var message = "";
+  message += "Is this a question about: "+classifcation+"?";
+
+  sendMessage(recipientId, message);
+};
+
 module.exports = {
   sendMessage: sendMessage,
-  kittenMessage: kittenMessage
+  kittenMessage: kittenMessage,
+  faqMessage: faqMessage
 };

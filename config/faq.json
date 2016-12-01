@@ -1,0 +1,335 @@
+{
+  "faqCategories": {
+    "cancel": [
+      {
+        "title":"How do I cancel a Billing Agreement?"
+      },
+      {
+        "title":"How do I cancel my Payflow account?"
+      },
+      {
+        "title":"Can I cancel a money request or invoice that I've already sent to someone?"
+      },
+      {
+        "title":"How do I cancel a payment or request a refund?"
+      },
+      {
+        "title":"How do I cancel an installment plan agreement I have with a merchant?"
+      },
+      {
+        "title":"How do I cancel an automatic payment I have with a merchant?"
+      },
+      {
+        "title":"How do I cancel an Add Money transfer from my bank account?"
+      },
+      {
+        "title":"How do I cancel my Enhanced Recurring Payment billing agreement with PayPal?"
+      },
+      {
+        "title":"Can I cancel a payment that I've already sent? "
+      },
+      {
+        "title":"How do I cancel a PayPal Credit dispute?"
+      }
+    ],
+
+    "card":[
+      {
+        "title":"Why is there a $1.95 charge on my card statement?"
+      },
+      {
+        "title":"Why is PayPal listed on my card statement?"
+      },
+      {
+        "title":"When I use my credit card or debit card to make a payment, will a cash advance fee be charged?"
+      },
+      {
+        "title":"Why has my credit or debit card been charged twice?"
+      },
+      {
+        "title":"Card Statement Name"
+      },
+      {
+        "title":"How do I remove a credit or debit card from my PayPal account?"
+      },
+      {
+        "title":"Can I withdraw money to my credit, debit, or prepaid card?"
+      },
+      {
+        "title":"Can I link the same card to more than one PayPal account?"
+      },
+      {
+        "title":"How do I change the expiration date of my debit or credit card?"
+      },
+      {
+        "title":"How do I edit the billing address linked to my credit card?"
+      }
+    ],
+
+    "password": [
+      {
+        "title":"How do I change my password and security questions?"
+      },
+      {
+        "title":"Tips for creating a secure password"
+      },
+      {
+        "title":"Why can't I view my password?"
+      },
+      {
+        "title":"I forgot my password. How do I reset it?"
+      },
+      {
+        "title":"How to sign up for a PayPal account"
+      },
+      {
+        "title":"What information is required to open a Personal PayPal account?"
+      },
+      {
+        "title":"What is the PayPal Security Key?"
+      },
+      {
+        "title":"How do I view or edit my account information?"
+      },
+      {
+        "title":"How do I add my PayPal account to my Samsung Account Manager and link my fingerprint?"
+      },
+      {
+        "title":"How do I update my eBay User ID?"
+      }
+    ],
+
+    "resolutionCenter": [
+      {
+        "title":"What is the Resolution Center?"
+      },
+      {
+        "title":"Should I report my problem in the eBay or PayPal Resolution Center?"
+      },
+      {
+        "title":"What should I do if my balance is negative?"
+      },
+      {
+        "title":"How do I view the status of an unauthorized claim?"
+      },
+      {
+        "title":"What is an eBay recoupment?"
+      },
+      {
+        "title":"How do I report unauthorized PayPal account activity?"
+      },
+      {
+        "title":"How do I file a claim or check the status of a claim?"
+      },
+      {
+        "title":"I didn’t receive the item I purchased or it’s different from the description."
+      },
+      {
+        "title":"Can I reopen a closed dispute?"
+      },
+      {
+        "title":"Can I appeal PayPal’s decision on my claim?"
+      }
+    ],
+
+    "fees": [
+      {
+        "title":"What fees does PayPal charge?"
+      },
+      {
+        "title":"What are the fees for requesting money and invoicing?"
+      },
+      {
+        "title":"What are the fees for PayPal accounts?"
+      },
+      {
+        "title":"Are there fees to use my PayPal Business Debit MasterCard®?"
+      },
+      {
+        "title":"What is the easiest way to calculate fees?"
+      },
+      {
+        "title":"What are the cross border fees when selling international?"
+      },
+      {
+        "title":"How do I find eBay shipping fees?"
+      },
+      {
+        "title":"Are there any fees to pay with PayPal in stores?"
+      },
+      {
+        "title":"What is the difference between Personal, Premier, and Business accounts?"
+      },
+      {
+        "title":"Does it cost money to open a PayPal account?"
+      }
+    ],
+
+    "accountInfo": [
+      {
+        "title":"Can I use my PayPal account in stores?"
+      },
+      {
+        "title":"How do I change the business name on my PayPal account?"
+      },
+      {
+        "title":"How do I change the name on my PayPal account?"
+      },
+      {
+        "title":"Additional Information about Account Limitations"
+      },
+      {
+        "title":"How do I close my PayPal account?"
+      },
+      {
+        "title":"Why can't I add a bank account to my PayPal account?"
+      },
+      {
+        "title":"How do I open a PayPal account?"
+      },
+      {
+        "title":"How do I remove a bank account from my PayPal account?"
+      },
+      {
+        "title":"How do I add money to my PayPal account from my confirmed bank account?"
+      },
+      {
+        "title":"How do I view or edit my account information?"
+      }
+    ],
+
+    "security": [
+      {
+        "title":"What is the PayPal Security Key?"
+      },
+      {
+        "title":"How do I change my security questions?"
+      },
+      {
+        "title":"How do I change my password and security questions?"
+      },
+      {
+        "title":"How do I log in if I don't have my PayPal Security Key with me?"
+      },
+      {
+        "title":"Security upgrade for partners and merchants"
+      },
+      {
+        "title":"Once I’ve enabled the PayPal Security Key, how do I use it with my mobile phone?"
+      },
+      {
+        "title":"How can I lift my Withdrawal Limit?"
+      },
+      {
+        "title":"What information is required to open a Personal PayPal account?"
+      },
+      {
+        "title":"How do I view or edit my account information?"
+      },
+      {
+        "title":"What can I do with PayPal?"
+      }
+    ],
+
+    "send": [
+      {
+        "title":"How do I send money?"
+      },
+      {
+        "title":"How do I send money with my mobile phone?"
+      },
+      {
+        "title":"What are the payment types when I send money?"
+      },
+      {
+        "title":"How do I send money to friends or family?"
+      },
+      {
+        "title":"Can I use PayPal Credit to Send Money?"
+      },
+      {
+        "title":"How do I request payments or send an invoice?"
+      },
+      {
+        "title":"What are the fees for requesting money and invoicing?"
+      },
+      {
+        "title":"To which email address should my customers send payments?"
+      },
+      {
+        "title":"How do I send an Instant Transfer using my U.S. bank account?"
+      },
+      {
+        "title":"How do I send a payment in another currency?"
+      }
+    ],
+
+    "change": [
+      {
+        "title":"How do I change my security questions?"
+      },
+      {
+        "title":"How do I change my street address?"
+      },
+      {
+        "title":"How do I change the name on my PayPal account?"
+      },
+      {
+        "title":"Can I change my PayPal address to another country?"
+      },
+      {
+        "title":"How do I change my password and security questions?"
+      },
+      {
+        "title":"How do I change the business name on my PayPal account?"
+      },
+      {
+        "title":"How do I change my personal information on my PayPal Extras MasterCard®?"
+      },
+      {
+        "title":"How do I change my payment preferences for in-store checkout?"
+      },
+      {
+        "title":"Can I change my reason for filing a dispute or claim?"
+      },
+      {
+        "title":"How do I change the way I pay for a recurring payment, subscription, automatic billing, or installment plan?"
+      }
+    ],
+
+    "refund": [
+      {
+        "title":"Where is my refund?"
+      },
+      {
+        "title":"How do I issue a full or partial refund?"
+      },
+      {
+        "title":"How do I cancel a payment or request a refund?"
+      },
+      {
+        "title":"How long do I have to accept a partial refund offer?"
+      },
+      {
+        "title":"How do I issue a full or partial refund for a dispute?"
+      },
+      {
+        "title":"How do I issue a refund using PayPal Here™?"
+      },
+      {
+        "title":"How do I accept or deny a partial refund?"
+      },
+      {
+        "title":"I want a refund. How do refunds work? "
+      },
+      {
+        "title":"How long will it take for a refund to appear on my PayPal Credit account?"
+      },
+      {
+        "title":"Why did I receive a Consumer Financial Protection Bureau (CFPB) refund check? "
+      }
+    ]
+
+  }
+
+}
