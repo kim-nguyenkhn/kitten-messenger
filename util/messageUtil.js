@@ -102,7 +102,7 @@ var faqMessage = function(recipientId, text) {
   console.log(logObj);
 
   // ask back
-  var message = "Is this a question about: "+classification+"?";
+  var message = { text: "Is this a question about: "+classification+"?" };
 
   sendMessage(recipientId, message);
 };
