@@ -1,7 +1,7 @@
 {
-  "name": "testbot",
+  "name": "kitten-messenger",
   "version": "1.0.0",
-  "description": "TestBot Server App",
+  "description": "Messenger bot that gives you kitties.",
   "main": "index.js",
   "engines": {
     "node": "5.11.1",
@@ -12,7 +12,7 @@
     "start": "node app.js",
     "jshint": "jshint --exclude node_modules ."
   },
-  "author": "Adam Jodlowski",
+  "author": "Kim H. Nguyen",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.15.0",

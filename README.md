@@ -6,4 +6,4 @@ Proof of concept for a Facebook Messenger bot.
 kitten <width> <height> - Gives you a kitty-image for your troubles.
 ```
 
-![Kimbot](screenshots/demo_01.png)
+<kbd>![Kimbot](screenshots/demo_01.png)</kbd>
