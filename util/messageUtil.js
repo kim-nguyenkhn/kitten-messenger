@@ -39,26 +39,29 @@ var communitySearchMessage = function(recipientId, message) {
       console.log('Error: ', response.body.error);
     } else {
       var results = 'Response: ';
-      var organicResults = body['organicResults'];
-      console.log('body', body);
-
+      var organicResults = response.body['organicResults'];
+      console.log('body', response.body);
       console.log('organicResults', organicResults);
-      organicResults.forEach(function(element) {
-        console.log(element);
-        results += element.linktext;
-      });
 
-      // for (var i = 0; i < organicResults.length; i++) {
-      //   results += organicResults[i].linktext + ': ' + organicResults[i].link + ' '
-      // }
+      if (organicResults) {
+        organicResults.forEach(function(element) {
+          console.log(element);
+          results += element.linktext;
+        });
 
-      // __.each(body.organicResults, function(element, index) {
-      //   console.log('Element: ', element);
-      //   console.log('Element.linktext: ', element.linktext);
-      //   console.log('Element.link: ', element.link);
-      //   results.concat(element.linktext + ': ' + element.link + ' ');
-      // });
-      console.log('Message: ', results);
+        // for (var i = 0; i < organicResults.length; i++) {
+        //   results += organicResults[i].linktext + ': ' + organicResults[i].link + ' '
+        // }
+
+        // __.each(body.organicResults, function(element, index) {
+        //   console.log('Element: ', element);
+        //   console.log('Element.linktext: ', element.linktext);
+        //   console.log('Element.link: ', element.link);
+        //   results.concat(element.linktext + ': ' + element.link + ' ');
+        // });
+      }
+
+      console.log('Results: ', results);
 
       sendMessage(recipientId, { text: results });
     }
