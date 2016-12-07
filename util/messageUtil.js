@@ -33,7 +33,6 @@ var communitySearchMessage = function(recipientId, message) {
     method: 'GET'
   }, function(error, response, body) {
     console.log('Body', body);
-
     if (error) {
       console.log('Error sending message: ', error);
     } else if (response.body.error) {
@@ -46,10 +45,9 @@ var communitySearchMessage = function(recipientId, message) {
         console.log('Element.link: ', element.link);
         message += element.linktext + ': ' + element.link + ' ';
       });
-      console.log('Message: ', message)
+      console.log('Message: ', message);
 
       sendMessage(recipientId, message);
-      return true;
     }
   });
 };
