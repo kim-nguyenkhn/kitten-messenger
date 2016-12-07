@@ -50,6 +50,10 @@ var communitySearchMessage = function(recipientId, message) {
       console.log('body.organicResults', body.organicResults);
       console.log('response.body.organicResults', response.body.organicResults);
 
+      for (var prop in body) {
+        console.log('BODY.PROP', prop);
+      }
+
       if (organicResults) {
         organicResults.forEach(function(element) {
           console.log(element);
