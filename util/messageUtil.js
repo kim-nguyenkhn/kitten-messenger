@@ -30,14 +30,19 @@ var sendMessage = function(recipientId, message) {
 var communitySearchMessage = function(recipientId, message) {
   request({
     url: 'https://www.paypal.com/selfhelp/community_search/?q=' + message,
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type' : 'application/json'
+    }
   }, function(error, response, body) {
-    console.log('Body: ', body);
     if (error) {
       console.log('Error sending message: ', error);
-    } else if (response.body.error) {
+    }
+    else if (response.body.error) {
       console.log('Error: ', response.body.error);
-    } else {
+    }
+    else {
       var results = 'Response: ';
       var organicResults = response.body.organicResults;
       console.log('body', body);
