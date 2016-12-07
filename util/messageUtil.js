@@ -47,7 +47,7 @@ var communitySearchMessage = function(recipientId, message) {
       });
       console.log('Message: ', results);
 
-      sendMessage(recipientId, results);
+      sendMessage(recipientId, { text: results });
     }
   });
 };
