@@ -21,4 +21,3 @@ setInterval(function() {
     }
   });
 }, 1500000); // every 25 minutes
-// zack's comment
