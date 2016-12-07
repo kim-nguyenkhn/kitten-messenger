@@ -26,10 +26,12 @@ router.get('/webhook', function (req, res) {
     for (i = 0; i < events.length; i++) {
       var event = events[i];
       if (event.message && event.message.text) {
-        if (!messageUtil.kittenMessage(event.sender.id, event.message.text)) {
-            // messageUtil.sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+        if (event.message.text.length >= 3 && event.message.text.toLowerCase().startsWith('pp')) {
+          messageUtil.communitySearchMessage(event.sender.id, event.message.text);
+        }
+        else if (!messageUtil.kittenMessage(event.sender.id, event.message.text)) {
+            messageUtil.sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
             // messageUtil.faqMessage(event.sender.id, event.message.text);
-            messageUtil.communitySearchMessage(event.sender.id, event.message.text);
         }
       } else if (event.postback) {
         console.log("Postback received: " + JSON.stringify(event.postback));
