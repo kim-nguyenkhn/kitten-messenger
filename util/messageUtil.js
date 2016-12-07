@@ -39,12 +39,16 @@ var communitySearchMessage = function(recipientId, message) {
       console.log('Error: ', response.body.error);
     } else {
       var results = 'Response: ';
-      __.each(body.organicResults, function(element, index) {
-        console.log('Element: ', element);
-        console.log('Element.linktext: ', element.linktext);
-        console.log('Element.link: ', element.link);
-        results.concat(element.linktext + ': ' + element.link + ' ');
-      });
+      var organicResults = body.organicResults;
+      for (var i = 0; i < organicResults.length; i++) {
+        results += organicResults[i].linktext + ': ' + organicResults[i].link + ' '
+      }
+      // __.each(body.organicResults, function(element, index) {
+      //   console.log('Element: ', element);
+      //   console.log('Element.linktext: ', element.linktext);
+      //   console.log('Element.link: ', element.link);
+      //   results.concat(element.linktext + ': ' + element.link + ' ');
+      // });
       console.log('Message: ', results);
 
       sendMessage(recipientId, { text: results });
