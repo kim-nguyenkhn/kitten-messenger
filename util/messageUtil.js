@@ -51,7 +51,7 @@ var communitySearchMessage = function(recipientId, message) {
       console.log('response.body.organicResults', response.body.organicResults);
 
       for (var prop in body) {
-        console.log('BODY.PROP', prop);
+        console.log('BODY.PROP', prop, body[prop]);
       }
 
       if (organicResults) {
