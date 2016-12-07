@@ -42,7 +42,8 @@ var communitySearchMessage = function(recipientId, message) {
     } else {
       var message = '';
       __.each(body.organicResults, function(element, index) {
-        message += element.link + '\n';
+        console.log(element.link);
+        message += element.linktext + ': ' + element.link;
       });
       console.log('Message: ', message)
 
