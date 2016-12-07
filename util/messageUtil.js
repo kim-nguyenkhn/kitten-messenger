@@ -44,16 +44,16 @@ var communitySearchMessage = function(recipientId, message) {
     }
     else {
       var results = 'Response: ';
+
       body = JSON.parse(body);
+
+
       console.log('body', body);
       console.log('response.body', response.body);
       console.log('body.organicResults', body.organicResults);
       console.log('response.body.organicResults', response.body.organicResults);
 
-      for (var prop in body) {
-        console.log('BODY.PROP', prop, body[prop]);
-      }
-
+      var organicResults = body.organicResults;
       if (organicResults) {
         organicResults.forEach(function(element) {
           console.log(element);
