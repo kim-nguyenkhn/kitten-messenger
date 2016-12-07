@@ -32,7 +32,7 @@ var communitySearchMessage = function(recipientId, message) {
     url: 'https://www.paypal.com/selfhelp/community_search/?q=' + message,
     method: 'GET'
   }, function(error, response, body) {
-    console.log('Body', body);
+    console.log('Body: ', body);
     if (error) {
       console.log('Error sending message: ', error);
     } else if (response.body.error) {
@@ -40,9 +40,14 @@ var communitySearchMessage = function(recipientId, message) {
     } else {
       var results = 'Response: ';
       var organicResults = body.organicResults;
-      for (var i = 0; i < organicResults.length; i++) {
-        results += organicResults[i].linktext + ': ' + organicResults[i].link + ' '
-      }
+      organicResults.forEach(function(element) {
+        console.log(element);
+        results += element.linktext;
+      });
+
+      // for (var i = 0; i < organicResults.length; i++) {
+      //   results += organicResults[i].linktext + ': ' + organicResults[i].link + ' '
+      // }
       // __.each(body.organicResults, function(element, index) {
       //   console.log('Element: ', element);
       //   console.log('Element.linktext: ', element.linktext);
