@@ -32,7 +32,6 @@ var communitySearchMessage = function(recipientId, message) {
     url: 'https://www.paypal.com/selfhelp/community_search/?q=' + message,
     method: 'GET'
   }, function(error, response, body) {
-    console.log('Response', response);
     console.log('Body', body);
 
     if (error) {
@@ -42,7 +41,9 @@ var communitySearchMessage = function(recipientId, message) {
     } else {
       var message = '';
       __.each(body.organicResults, function(element, index) {
-        console.log(element.link);
+        console.log('Element: ', element);
+        console.log('Element.linktext: ', element.linktext);
+        console.log('Element.link: ', element.link);
         message += element.linktext + ': ' + element.link;
       });
       console.log('Message: ', message)
