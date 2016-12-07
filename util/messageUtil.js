@@ -39,7 +39,7 @@ var communitySearchMessage = function(recipientId, message) {
       console.log('Error: ', response.body.error);
     } else {
       var results = 'Response: ';
-      var organicResults = body.organicResults;
+      var organicResults = body['organicResults'];
       console.log('body', body);
 
       console.log('organicResults', organicResults);
