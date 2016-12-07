@@ -40,6 +40,9 @@ var communitySearchMessage = function(recipientId, message) {
     } else {
       var results = 'Response: ';
       var organicResults = body.organicResults;
+      console.log('body', body);
+
+      console.log('organicResults', organicResults);
       organicResults.forEach(function(element) {
         console.log(element);
         results += element.linktext;
@@ -48,6 +51,7 @@ var communitySearchMessage = function(recipientId, message) {
       // for (var i = 0; i < organicResults.length; i++) {
       //   results += organicResults[i].linktext + ': ' + organicResults[i].link + ' '
       // }
+
       // __.each(body.organicResults, function(element, index) {
       //   console.log('Element: ', element);
       //   console.log('Element.linktext: ', element.linktext);
