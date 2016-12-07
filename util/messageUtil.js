@@ -26,6 +26,27 @@ var sendMessage = function(recipientId, message) {
   });
 };
 
+// function for sending community search API results
+var communitySearchMessage = function(recipientId, message) {
+  request({
+    url: 'https://www.paypal.com/selfhelp/community_search/?q=' + message,
+    method: 'GET'
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    } else {
+      var message = '';
+      __.each(body.organicResults, function(element, index) {
+        message += element.link + '\n';
+      });
+      sendMessage(recipientId, message);
+      return true;
+    }
+  });
+};
+
 // send rich message with kitten
 var kittenMessage = function(recipientId, text) {
   text = text || "";
