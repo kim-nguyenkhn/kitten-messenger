@@ -131,5 +131,6 @@ var faqMessage = function(recipientId, text) {
 module.exports = {
   sendMessage: sendMessage,
   kittenMessage: kittenMessage,
-  faqMessage: faqMessage
+  faqMessage: faqMessage,
+  communitySearchMessage: communitySearchMessage
 };
