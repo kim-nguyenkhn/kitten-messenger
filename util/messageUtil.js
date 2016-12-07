@@ -38,12 +38,12 @@ var communitySearchMessage = function(recipientId, message) {
     } else if (response.body.error) {
       console.log('Error: ', response.body.error);
     } else {
-      var message = '';
+      var message = 'Response: ';
       __.each(body.organicResults, function(element, index) {
         console.log('Element: ', element);
         console.log('Element.linktext: ', element.linktext);
         console.log('Element.link: ', element.link);
-        message += element.linktext + ': ' + element.link + ' ';
+        message.concat(element.linktext + ': ' + element.link + ' ');
       });
       console.log('Message: ', message);
 
