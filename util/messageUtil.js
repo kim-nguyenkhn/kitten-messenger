@@ -33,7 +33,7 @@ var communitySearchMessage = function(recipientId, message) {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
-      'Content-Type' : 'application/json'
+      'Content-Type' : 'application/json; charset=utf-8'
     }
   }, function(error, response, body) {
     if (error) {
@@ -44,7 +44,7 @@ var communitySearchMessage = function(recipientId, message) {
     }
     else {
       var results = 'Response: ';
-      var organicResults = response.body.organicResults;
+      body = JSON.parse(body);
       console.log('body', body);
       console.log('response.body', response.body);
       console.log('body.organicResults', body.organicResults);
