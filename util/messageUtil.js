@@ -44,7 +44,7 @@ var communitySearchMessage = function(recipientId, message) {
         console.log('Element: ', element);
         console.log('Element.linktext: ', element.linktext);
         console.log('Element.link: ', element.link);
-        message += element.linktext + ': ' + element.link;
+        message += element.linktext + ': ' + element.link + ' ';
       });
       console.log('Message: ', message)
 
