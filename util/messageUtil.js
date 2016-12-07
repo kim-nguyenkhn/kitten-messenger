@@ -39,9 +39,11 @@ var communitySearchMessage = function(recipientId, message) {
       console.log('Error: ', response.body.error);
     } else {
       var results = 'Response: ';
-      var organicResults = response.body['organicResults'];
-      console.log('body', response.body);
-      console.log('organicResults', organicResults);
+      var organicResults = response.body.organicResults;
+      console.log('body', body);
+      console.log('response.body', response.body);
+      console.log('body.organicResults', body.organicResults);
+      console.log('response.body.organicResults', response.body.organicResults);
 
       if (organicResults) {
         organicResults.forEach(function(element) {
