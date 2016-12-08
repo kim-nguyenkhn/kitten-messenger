@@ -7,20 +7,16 @@ var messageUtil = require('../util/messageUtil'),
 var cantLogin = {
   initCantLoginFlow: function(recipientId) {
     messageUtil.sendMessage(recipientId, {
-      "attachment": {
-        "type": "template",
-        "payload": {
-          "template_type": "generic",
-          "elements": [{
-            "title": responses.sad.text[0],
-            "image_url": responses.sad.gifs[0]
-          }]
+      "attachment":{
+        "type":"image",
+        "payload":{
+          "url": responses.sad.gifs[0]
         }
       }
     });
 
     // var INIT_CANT_LOGIN_FLOW_CONTENT = "Sorry to hear that :( Select the option that applies to you below.";
-    var INIT_CANT_LOGIN_FLOW_CONTENT = "Select the option that applies to you below.";
+    var INIT_CANT_LOGIN_FLOW_CONTENT = responses.sad.text[0]+ " " + "Select the option that applies to you below.";
     messageUtil.sendMessage(recipientId, {
       "attachment": {
         "type": "template",
@@ -63,10 +59,9 @@ var cantLogin = {
     // and http://stackoverflow.com/questions/37152355/facebook-messenger-bot-not-sending-messages-in-order
     async.series([
       function(cb) {
-        messageUtil.sendMessage(recipientId, {
+        messageUtil.sendMessageWithCallback(recipientId, {
           "text": FORGOT_PASSWORD_CONTENT_PT1
-        });
-        cb(null);
+        }, cb);
       },
       function(cb) {
         setTimeout(function() {
@@ -75,10 +70,9 @@ var cantLogin = {
         cb(null);
       },
       function(cb) {
-        messageUtil.sendMessage(recipientId, {
+        messageUtil.sendMessageWithCallback(recipientId, {
           "text": FORGOT_PASSWORD_CONTENT_PT2
-        });
-        cb(null);
+        }, cb);
       }
     ]);
   }
