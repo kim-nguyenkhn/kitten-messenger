@@ -21,11 +21,11 @@
         "http://gph.is/1DKLcIO"
       ],
       "text": [
-        "I'm glad I could help!",
-        "Awesome!",
-        "That's great! I'm happy to hear that",
-        "Okay, cool!",
-        "Thank you!"
+        "I'm glad I could help! 😄",
+        "Awesome! 😃",
+        "That's great! I'm happy to hear that 😁",
+        "Okay, cool! 😀",
+        "Thank you! 😊"
       ]
     },
     "sad": {
@@ -49,9 +49,9 @@
         "http://gph.is/1XkGZIr"
       ],
       "text": [
-        "I'm sorry to hear that",
-        "Aw, that's too bad",
-        "Oh, no!"
+        "I'm sorry to hear that 😥",
+        "Aw, that's too bad 😩",
+        "Oh, no! 😱"
       ]
     },
     "smart": {
@@ -75,11 +75,11 @@
         "http://gph.is/28JVPXl"
       ],
       "text": [
-        "Hey, I know how to do that!",
-        "You came to the right bot!",
-        "Oh, oh, pick me!",
-        "I'm on it!",
-        "Oh! I know!"
+        "Hey, I know how to do that! 🙂",
+        "You came to the right bot! 😉",
+        "Oh, oh, pick me! 😇",
+        "I'm on it! 😤",
+        "Oh! I know! ☺️"
       ]
     },
     "confused": {
@@ -103,10 +103,10 @@
         "http://gph.is/Zv2BWU"
       ],
       "text": [
-        "Hmm, I'm not sure how to do that...",
-        "I'm sorry, my bot powers can't help with that.",
-        "Uh, oh, looks like I'm not quite smart enough for that.",
-        "Welp...you got me with that one"
+        "Hmm, I'm not sure how to do that... 😰",
+        "I'm sorry, my bot powers can't help with that 😳",
+        "Uh, oh, looks like I'm not quite smart enough for that 😨",
+        "Welp...you got me with that one 😔"
       ]
     }
   }
