@@ -63,10 +63,9 @@ var cantLogin = {
     // and http://stackoverflow.com/questions/37152355/facebook-messenger-bot-not-sending-messages-in-order
     async.series([
       function(cb) {
-        messageUtil.sendMessage(recipientId, {
+        messageUtil.sendMessageWithCallback(recipientId, {
           "text": FORGOT_PASSWORD_CONTENT_PT1
-        });
-        cb(null);
+        }, cb);
       },
       function(cb) {
         setTimeout(function() {
@@ -75,10 +74,9 @@ var cantLogin = {
         cb(null);
       },
       function(cb) {
-        messageUtil.sendMessage(recipientId, {
+        messageUtil.sendMessageWithCallback(recipientId, {
           "text": FORGOT_PASSWORD_CONTENT_PT2
-        });
-        cb(null);
+        }, cb);
       }
     ]);
   }
