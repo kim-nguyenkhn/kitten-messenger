@@ -3,6 +3,8 @@
 var express = require('express'),
     router = express.Router(),
     messageUtil = require('../util/messageUtil'),
+    cantLogin = require('../util/cantLogin'),
+    didThisHelp = require('../util/didThisHelp'),
     config = require('../config/config');
 
 // middleware that is specific to this router
@@ -46,20 +48,56 @@ router.get('/webhook', function (req, res) {
                 "text": "Hi! I'm PPBot. Find out how you can interact with me by typing 'Help'.",
                 "buttons":[
                   {
+                    // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
+                    // can't log in https://www.paypal.com/us/selfhelp/article/what-can-i-do-if-i-can't-i-log-in-faq1935/2
                     "type":"postback",
-                    "title":"Help",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                    "title":"I Can't Log In",
+                    "payload":"PAYLOAD_CANT_LOGIN"
                   },
                   {
+                    // how do I send money https://www.paypal.com/us/selfhelp/article/how-do-i-send-money-faq1684/1
                     "type":"postback",
-                    "title":"Talk to a representative",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                    "title":"How do I Send Money",
+                    "payload":"PAYLOAD_SEND_MONEY"
+                  },
+                  {
+                    // View or edit account info https://www.paypal.com/us/selfhelp/article/how-do-i-view-or-edit-my-account-information-faq772
+                    "type":"postback",
+                    "title":"View/Edit Account Info",
+                    "payload":"PAYLOAD_EDIT_ACCOUNT_INFO"
                   }
                 ]
               }
             }
           });
         }
+
+        // forgot email
+        if (event.postback.payload.indexOf('PAYLOAD_FORGOT_EMAIL') > -1) {
+          cantLogin.forgotEmail();
+        }
+
+        // forgot password
+        if (event.postback.payload.indexOf('PAYLOAD_FORGOT_PASSWORD') > -1) {
+          cantLogin.forgotPassword();
+        }
+
+        // send money
+        if (event.postback.payload.indexOf('PAYLOAD_SEND_MONEY') > -1) {
+          messageUtil.sendMessage(event.sender.id, {
+
+          });
+        }
+
+        // edit account info
+        if (event.postback.payload.indexOf('PAYLOAD_EDIT_ACCOUNT_INFO') > -1) {
+          messageUtil.sendMessage(event.sender.id, {
+
+          });
+        }
+
+
+
       }
     }
     res.sendStatus(200);
