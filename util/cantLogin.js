@@ -49,13 +49,19 @@ var cantLogin = {
     async.series([
       function(cb) {
         messageUtil.sendMessage(recipientId, {
-          "text": FORGOT_PASSWORD_CONTENT_PT2
+          "text": FORGOT_PASSWORD_CONTENT_PT1
         });
         cb(null);
       },
       function(cb) {
+        setTimeout(function() {
+          // do nothing, just sleeping
+        }, 3000);
+        cb(null);
+      },
+      function(cb) {
         messageUtil.sendMessage(recipientId, {
-          "text": FORGOT_PASSWORD_CONTENT_PT1
+          "text": FORGOT_PASSWORD_CONTENT_PT2
         });
         cb(null);
       }
