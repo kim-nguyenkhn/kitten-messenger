@@ -1,0 +1,113 @@
+{
+  "Responses": {
+    "happy": {
+      "gifs": [
+        "http://gph.is/241crPA",
+        "http://gph.is/22ZgU10",
+        "http://gph.is/1OX1RRZ",
+        "http://gph.is/2g8Lrt8",
+        "http://gph.is/2cGEpNg",
+        "http://gph.is/1QmzWeT",
+        "http://gph.is/1RQn3ED",
+        "http://gph.is/1oKbRCL",
+        "http://gph.is/XGqLKI",
+        "http://gph.is/1nc4OB0",
+        "http://gph.is/11RIbqM",
+        "http://gph.is/2a7EnaD",
+        "http://gph.is/1OwKx4L",
+        "http://gph.is/1SoIFxf",
+        "http://gph.is/2aoSsms",
+        "http://gph.is/Vx8pJO",
+        "http://gph.is/1DKLcIO"
+      ],
+      "text": [
+        "I'm glad I could help!",
+        "Awesome!",
+        "That's great! I'm happy to hear that",
+        "Okay, cool!",
+        "Thank you!"
+      ]
+    },
+    "sad": {
+      "gifs": [
+        "http://gph.is/1lC08Va",
+        "http://gph.is/XH5wbV",
+        "http://gph.is/1iHLBRj",
+        "http://gph.is/2g24gzo",
+        "http://gph.is/29l2li5",
+        "http://gph.is/201kZ3x",
+        "http://gph.is/1rfV6kf",
+        "http://gph.is/1QHc2t3",
+        "http://gph.is/17BPG4S",
+        "http://gph.is/12O9Qss",
+        "http://gph.is/XMWaLL",
+        "http://gph.is/1xRNS3T",
+        "http://gph.is/1aRamHS",
+        "http://gph.is/XH0RXr",
+        "http://gph.is/14hjJtU",
+        "http://gph.is/1PE9ZRF",
+        "http://gph.is/1XkGZIr"
+      ],
+      "text": [
+        "I'm sorry to hear that",
+        "Aw, that's too bad",
+        "Oh, no!"
+      ]
+    },
+    "smart": {
+      "gifs": [
+        "http://gph.is/22YVp0h",
+        "http://gph.is/2bsIWyI",
+        "http://gph.is/28TjO4O",
+        "http://gph.is/1WmX6Er",
+        "http://gph.is/1UUIpCy",
+        "http://gph.is/1xJ8Ns2",
+        "http://gph.is/22T6RL5",
+        "http://gph.is/2cZvhTF",
+        "http://gph.is/2dDgaMa",
+        "http://gph.is/2e6MtDk",
+        "http://gph.is/29aHmEg",
+        "http://gph.is/1xlrW3w",
+        "http://gph.is/29Z6Z5T",
+        "http://gph.is/2aRZQsF",
+        "http://gph.is/28VE7vm",
+        "http://gph.is/1ClthLK",
+        "http://gph.is/28JVPXl"
+      ],
+      "text": [
+        "Hey, I know how to do that!",
+        "You came to the right bot!",
+        "Oh, oh, pick me!",
+        "I'm on it!",
+        "Oh! I know!"
+      ]
+    },
+    "confused": {
+      "gifs": [
+        "http://gph.is/XGKNoy",
+        "http://gph.is/1K3v7Vf",
+        "http://gph.is/1HSuFbi",
+        "http://gph.is/1auAQ0q",
+        "http://gph.is/2eOBr6b",
+        "http://gph.is/2dRhFWK",
+        "http://gph.is/2c5yxJg",
+        "http://gph.is/2fBr6vh",
+        "http://gph.is/2dXVUIi",
+        "http://gph.is/1Et4qXE",
+        "http://gph.is/1Mvousr",
+        "http://gph.is/172LYOa",
+        "http://gph.is/28SNITO",
+        "http://gph.is/2cahAyQ",
+        "http://gph.is/2d18pnm",
+        "http://gph.is/2dOvtmF",
+        "http://gph.is/Zv2BWU"
+      ],
+      "text": [
+        "Hmm, I'm not sure how to do that...",
+        "I'm sorry, my bot powers can't help with that.",
+        "Uh, oh, looks like I'm not quite smart enough for that.",
+        "Welp...you got me with that one"
+      ]
+    }
+  }
+}
