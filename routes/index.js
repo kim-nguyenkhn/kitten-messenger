@@ -42,20 +42,20 @@ router.get('/webhook', function (req, res) {
         // TODO: handle event.postback.payload
         if (event.postback.payload.indexOf('PAYLOAD_NEW_THREAD') > -1) {
           var userDetails;
-          request({
-            url: config.baseUrls.facebookGraph + '/v2.6/' + event.sender.id,
-            qs: {access_token: process.env.PAGE_ACCESS_TOKEN}
-          }, function(error, response, body) {
-            userDetails = body;
-            console.log('userDetails', userDetails);
-          });
+          // request({
+          //   url: config.baseUrls.facebookGraph + '/v2.6/' + event.sender.id,
+          //   qs: {access_token: process.env.PAGE_ACCESS_TOKEN}
+          // }, function(error, response, body) {
+          //   userDetails = body;
+          //   console.log('userDetails', userDetails);
+          // });
 
           messageUtil.sendMessage(event.sender.id, {
             "attachment": {
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": "Hi "+userDetails.first_name+"! I'm PPBot. Find out how you can interact with me by typing 'Help'.",
+                "text": "Hi, I'm PPBot! Find out how you can interact with me by typing 'Help'.",
                 "buttons":[
                   {
                     // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
