@@ -64,9 +64,6 @@ var setTypingOff = function(recipientId, message) {
 
 // function for sending community search API results
 var communitySearchMessage = function(recipientId, message) {
-  // typing bubbles on
-  setTypingOn(recipientId, message);
-
   request({
     url: 'https://www.paypal.com/selfhelp/community_search/?q=' + message,
     method: 'GET',
@@ -75,37 +72,44 @@ var communitySearchMessage = function(recipientId, message) {
       'Content-Type' : 'application/json; charset=utf-8'
     }
   }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-    }
-    else if (response.body.error) {
-      console.log('Error: ', response.body.error);
-    }
-    else {
-      var results = 'Response: ';
-      body = JSON.parse(body);
-      var organicResults = body.organicResults;
-      if (organicResults) {
-        __.each(body.organicResults, function(element, index) {
-          console.log('Element: ', element);
-          console.log('Element.linktext: ', element.linktext);
-          console.log('Element.link: ', element.link);
-          results += element.linktext + ': ' + element.link + ' ';
-        });
+    // typing bubbles on
+    setTypingOn(recipientId, message);
 
-        var msg;
-        for (var i = 0; i < Math.min(3, organicResults.length); i++) {
-          msg = organicResults[i].linktext + ': ' + organicResults[i].link + ' \n';
-          sendMessage(recipientId, { text: msg });
-          //typing bubbles off
-          setTypingOff(recipientId, message);
-        }
+    setTimeout(function() {
+      if (error) {
+        console.log('Error sending message: ', error);
       }
+      else if (response.body.error) {
+        console.log('Error: ', response.body.error);
+      }
+      else {
+        var results = 'Response: ';
+        body = JSON.parse(body);
+        var organicResults = body.organicResults;
+        if (organicResults) {
+          __.each(body.organicResults, function(element, index) {
+            console.log('Element: ', element);
+            console.log('Element.linktext: ', element.linktext);
+            console.log('Element.link: ', element.link);
+            results += element.linktext + ': ' + element.link + ' ';
+          });
 
-      // console.log('Results: ', results);
+          var msg;
+          for (var i = 0; i < Math.min(3, organicResults.length); i++) {
+            msg = organicResults[i].linktext + ': ' + organicResults[i].link + ' \n';
+            sendMessage(recipientId, { text: msg });
+          }
+        }
 
-      // sendMessage(recipientId, { text: results });
-    }
+        // console.log('Results: ', results);
+
+        // sendMessage(recipientId, { text: results });
+      }
+    }, 5000);
+
+    //typing bubbles off
+    setTypingOff(recipientId, message);
+
   });
 };
 
