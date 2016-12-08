@@ -38,7 +38,27 @@ router.get('/webhook', function (req, res) {
 
         // TODO: handle event.postback.payload
         if (event.postback.payload.indexOf('PAYLOAD_NEW_THREAD') > -1) {
-          messageUtil.sendMessage(event.sender.id, {text: "Hi! I'm PPBot. Find out how you can interact with me by typing 'Help'."});
+          messageUtil.sendMessage(event.sender.id, {
+            "attachment": {
+              "type": "template",
+              "payload": {
+                "template_type": "button",
+                "text": "Hi! I'm PPBot. Find out how you can interact with me by typing 'Help'.",
+                "buttons":[
+                  {
+                    "content_type":"text",
+                    "title":"Help",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
+                  },
+                  {
+                    "content_type":"text",
+                    "title":"Talk to a representative",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
+                  }
+                ]
+              }
+            }
+          });
         }
       }
     }
