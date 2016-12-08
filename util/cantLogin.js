@@ -7,21 +7,16 @@ var messageUtil = require('../util/messageUtil'),
 var cantLogin = {
   initCantLoginFlow: function(recipientId) {
     messageUtil.sendMessage(recipientId, {
-      "attachment": {
-        "type": "template",
-        "payload": {
-          "template_type": "generic",
-          "elements": [{
-            "title": responses.sad.text[0],
-            // "image_url": responses.sad.gifs[0]
-            "image_url": "http://i.giphy.com/zcVOyJBHYZvX2.gif"
-          }]
+      "attachment":{
+        "type":"image",
+        "payload":{
+          "url": responses.sad.gifs[0]
         }
       }
     });
 
     // var INIT_CANT_LOGIN_FLOW_CONTENT = "Sorry to hear that :( Select the option that applies to you below.";
-    var INIT_CANT_LOGIN_FLOW_CONTENT = "Select the option that applies to you below.";
+    var INIT_CANT_LOGIN_FLOW_CONTENT = responses.sad.text[0]+ " " + "Select the option that applies to you below.";
     messageUtil.sendMessage(recipientId, {
       "attachment": {
         "type": "template",

@@ -226,6 +226,7 @@ var faqMessage = function(recipientId, text) {
 
 module.exports = {
   sendMessage: sendMessage,
+  sendMessageWithCallback: sendMessageWithCallback,
   kittenMessage: kittenMessage,
   faqMessage: faqMessage,
   communitySearchMessage: communitySearchMessage
