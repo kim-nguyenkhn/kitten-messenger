@@ -60,19 +60,19 @@ router.get('/webhook', function (req, res) {
                     // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
                     // can't log in https://www.paypal.com/us/selfhelp/article/what-can-i-do-if-i-can't-i-log-in-faq1935/2
                     "type":"postback",
-                    "title":"I Can't Log In",
+                    "title":"I can't login",
                     "payload":"PAYLOAD_CANT_LOGIN"
                   },
                   {
                     // how do I send money https://www.paypal.com/us/selfhelp/article/how-do-i-send-money-faq1684/1
                     "type":"postback",
-                    "title":"How do I Send Money",
+                    "title":"How do I send money",
                     "payload":"PAYLOAD_SEND_MONEY"
                   },
                   {
                     // View or edit account info https://www.paypal.com/us/selfhelp/article/how-do-i-view-or-edit-my-account-information-faq772
                     "type":"postback",
-                    "title":"View/Edit Account Info",
+                    "title":"How do I edit my account",
                     "payload":"PAYLOAD_EDIT_ACCOUNT_INFO"
                   }
                 ]

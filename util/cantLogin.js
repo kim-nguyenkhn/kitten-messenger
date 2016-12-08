@@ -1,11 +1,15 @@
 'use strict';
 
 var messageUtil = require('../util/messageUtil'),
-    async = require('async');
+    async = require('async'),
+    responses = require('../config/responses').Responses;
 
 var cantLogin = {
   initCantLoginFlow: function(recipientId) {
     var INIT_CANT_LOGIN_FLOW_CONTENT = "Sorry to hear that :( Select the option that applies to you below.";
+    messageUtil.sendMessage(recipientId, {
+      "text": responses.sad.text + ' ' + responses.sad.gifs[0]
+    });
     messageUtil.sendMessage(recipientId, {
       "attachment": {
         "type": "template",
