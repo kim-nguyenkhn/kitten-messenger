@@ -94,10 +94,20 @@ var communitySearchMessage = function(recipientId, message) {
             results += element.linktext + ': ' + element.link + ' ';
           });
 
-          var msg;
+          var msg, buttonTxt;
           for (var i = 0; i < Math.min(3, organicResults.length); i++) {
-            msg = organicResults[i].linktext + ': ' + organicResults[i].link + ' \n';
-            sendMessage(recipientId, { text: msg });
+            msg = organicResults[i].link + ' \n';
+            buttonTxt = organicResults[i].linktext;
+            sendMessage(recipientId, {
+              text: msg,
+              quick_replies: [
+                {
+                  content_type: "text",
+                  title: buttonTxt,
+                  payload: "TODO_DEVELOPER_PREDEFINED_PAYLOAD"
+                }
+              ]
+            });
           }
         }
 
@@ -106,7 +116,7 @@ var communitySearchMessage = function(recipientId, message) {
         // sendMessage(recipientId, { text: results });
       }
       setTypingOff(recipientId, message);
-      
+
     }, 5000);
 
     //typing bubbles off
