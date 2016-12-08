@@ -15,8 +15,43 @@ var sendMessage = function(recipientId, message) {
     method: 'POST',
     json: {
       recipient: {id: recipientId},
-      message: message,
+      message: message
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+};
+
+var setTypingOn = function(recipientId, message) {
+  request({
+    url: config.baseUrls.facebookGraph + '/v2.6/me/messages',
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+    method: 'POST',
+    json: {
+      recipient: {id: recipientId},
       sender_action: 'typing_on'
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+};
+
+var setTypingOff = function(recipientId, message) {
+  request({
+    url: config.baseUrls.facebookGraph + '/v2.6/me/messages',
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+    method: 'POST',
+    json: {
+      recipient: {id: recipientId},
+      sender_action: 'typing_off'
     }
   }, function(error, response, body) {
     if (error) {
@@ -29,6 +64,9 @@ var sendMessage = function(recipientId, message) {
 
 // function for sending community search API results
 var communitySearchMessage = function(recipientId, message) {
+  // typing bubbles on
+  setTypingOn(recipientId, message);
+
   request({
     url: 'https://www.paypal.com/selfhelp/community_search/?q=' + message,
     method: 'GET',
@@ -59,6 +97,8 @@ var communitySearchMessage = function(recipientId, message) {
         for (var i = 0; i < Math.min(3, organicResults.length); i++) {
           msg = organicResults[i].linktext + ': ' + organicResults[i].link + ' \n';
           sendMessage(recipientId, { text: msg });
+          //typing bubbles off
+          setTypingOff(recipientId, message);
         }
       }
 
