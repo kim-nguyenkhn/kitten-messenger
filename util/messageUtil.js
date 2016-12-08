@@ -65,7 +65,8 @@ var setTypingOff = function(recipientId, message) {
 // function for sending community search API results
 var communitySearchMessage = function(recipientId, message) {
   request({
-    url: 'https://www.paypal.com/selfhelp/community_search/?q=' + message,
+    url: 'https://www.paypal.com/selfhelp/community_search',
+    qs: {q: message},
     method: 'GET',
     headers: {
       'Accept': 'application/json',
