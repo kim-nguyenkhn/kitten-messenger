@@ -13,6 +13,65 @@ app.use('/', routes);
 
 app.listen((process.env.PORT || 3000));
 
+// greeting
+request({
+  url: config.baseUrls.facebookGraph + '/v2.6/me/thread_settings',
+  qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+  method: 'POST',
+  json: {
+    "setting_type":"greeting",
+    "greeting":{
+      "text": "Hi Ashley, I'm PPBot, PayPal's Customer Service Bot."
+    }
+  }
+}, function(error, response, body) {
+  if (error) {
+    console.log('Error sending message: ', error);
+  } else if (response.body.error) {
+    console.log('Error: ', response.body.error);
+  }
+});
+
+// persistent menu
+request({
+  url: config.baseUrls.facebookGraph + '/v2.6/me/thread_settings',
+  qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+  method: 'POST',
+  json: {
+    "setting_type":"call_to_actions",
+    "thread_state" : "existing_thread",
+    "call_to_actions":[
+      {
+        "type":"postback",
+        "title":"Help",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
+      },
+      {
+        "type":"postback",
+        "title":"About PPBot",
+        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
+      },
+      {
+        "type":"web_url",
+        "title":"Call customer support",
+        "url":"https://www.paypal.com/us/selfhelp/contact/call",
+        "webview_height_ratio": "full"
+      },
+      {
+        "type":"web_url",
+        "title":"Go to PayPal",
+        "url":"https://www.paypal.com"
+      }
+    ]
+  }
+}, function(error, response, body) {
+  if (error) {
+    console.log('Error sending message: ', error);
+  } else if (response.body.error) {
+    console.log('Error: ', response.body.error);
+  }
+});
+
 // very basic keepalive ping
 setInterval(function() {
   request(config.baseUrls.herokuApp, function(error, response, body) {
