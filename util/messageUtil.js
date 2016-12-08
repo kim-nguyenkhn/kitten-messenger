@@ -105,11 +105,11 @@ var communitySearchMessage = function(recipientId, message) {
 
         // sendMessage(recipientId, { text: results });
       }
+      setTypingOff(recipientId, message);
+      
     }, 5000);
 
     //typing bubbles off
-    setTypingOff(recipientId, message);
-
   });
 };
 
