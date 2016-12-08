@@ -46,12 +46,12 @@ router.get('/webhook', function (req, res) {
                 "text": "Hi! I'm PPBot. Find out how you can interact with me by typing 'Help'.",
                 "buttons":[
                   {
-                    "content_type":"text",
+                    "type":"postback",
                     "title":"Help",
                     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_RED"
                   },
                   {
-                    "content_type":"text",
+                    "type":"postback",
                     "title":"Talk to a representative",
                     "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_GREEN"
                   }
