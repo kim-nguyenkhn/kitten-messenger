@@ -53,11 +53,15 @@ var communitySearchMessage = function(recipientId, message) {
           console.log('Element.link: ', element.link);
           results += element.linktext + ': ' + element.link + ' ';
         });
+
+        for (var i = 0; i < Math.min(3, organicResults.length); i++) {
+          sendMessage(recipientId, { text: organicResults[i] });
+        });
       }
 
-      console.log('Results: ', results);
+      // console.log('Results: ', results);
 
-      sendMessage(recipientId, { text: results });
+      // sendMessage(recipientId, { text: results });
     }
   });
 };
