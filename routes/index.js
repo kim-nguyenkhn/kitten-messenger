@@ -74,17 +74,17 @@ router.get('/webhook', function (req, res) {
 
         //
         if (event.postback.payload.indexOf('PAYLOAD_CANT_LOGIN') > -1) {
-          cantLogin.initCantLoginFlow();
+          cantLogin.initCantLoginFlow(event.sender.id);
         }
 
         // forgot email
         if (event.postback.payload.indexOf('PAYLOAD_FORGOT_EMAIL') > -1) {
-          cantLogin.forgotEmail();
+          cantLogin.forgotEmail(event.sender.id);
         }
 
         // forgot password
         if (event.postback.payload.indexOf('PAYLOAD_FORGOT_PASSWORD') > -1) {
-          cantLogin.forgotPassword();
+          cantLogin.forgotPassword(event.sender.id);
         }
 
         // send money
