@@ -54,9 +54,9 @@ var communitySearchMessage = function(recipientId, message) {
           results += element.linktext + ': ' + element.link + ' ';
         });
 
-        for (var i = 0; i < Math.min(3, organicResults.length); i++) {
+        for (var i = 0; i < Math.min(3, organicResults.length);; i++) {
           sendMessage(recipientId, { text: organicResults[i] });
-        });
+        }
       }
 
       // console.log('Results: ', results);
