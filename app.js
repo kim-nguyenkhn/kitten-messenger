@@ -13,6 +13,28 @@ app.use('/', routes);
 
 app.listen((process.env.PORT || 3000));
 
+// get started button
+request({
+  url: config.baseUrls.facebookGraph + '/v2.6/me/thread_settings',
+  qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+  method: 'POST',
+  json: {
+    "setting_type":"call_to_actions",
+    "thread_state":"new_thread",
+    "call_to_actions":[
+      {
+        "payload":"USER_DEFINED_PAYLOAD"
+      }
+    ]
+  }
+}, function(error, response, body) {
+  if (error) {
+    console.log('Error sending message: ', error);
+  } else if (response.body.error) {
+    console.log('Error: ', response.body.error);
+  }
+});
+
 // greeting
 request({
   url: config.baseUrls.facebookGraph + '/v2.6/me/thread_settings',
@@ -53,7 +75,7 @@ request({
       },
       {
         "type":"web_url",
-        "title":"Call customer support",
+        "title":"Call Customer Support",
         "url":"https://www.paypal.com/us/selfhelp/contact/call",
         "webview_height_ratio": "full"
       },
