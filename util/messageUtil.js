@@ -44,32 +44,15 @@ var communitySearchMessage = function(recipientId, message) {
     }
     else {
       var results = 'Response: ';
-
       body = JSON.parse(body);
-
-
-      console.log('body', body);
-      console.log('response.body', response.body);
-      console.log('body.organicResults', body.organicResults);
-      console.log('response.body.organicResults', response.body.organicResults);
-
       var organicResults = body.organicResults;
       if (organicResults) {
-        organicResults.forEach(function(element) {
-          console.log(element);
-          results += element.linktext;
+        __.each(body.organicResults, function(element, index) {
+          console.log('Element: ', element);
+          console.log('Element.linktext: ', element.linktext);
+          console.log('Element.link: ', element.link);
+          results += element.linktext + ': ' + element.link + ' ';
         });
-
-        // for (var i = 0; i < organicResults.length; i++) {
-        //   results += organicResults[i].linktext + ': ' + organicResults[i].link + ' '
-        // }
-
-        // __.each(body.organicResults, function(element, index) {
-        //   console.log('Element: ', element);
-        //   console.log('Element.linktext: ', element.linktext);
-        //   console.log('Element.link: ', element.link);
-        //   results.concat(element.linktext + ': ' + element.link + ' ');
-        // });
       }
 
       console.log('Results: ', results);
