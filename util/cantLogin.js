@@ -1,7 +1,7 @@
 'use strict';
 
-var messageUtil = require('../util/messageUtil');
-
+var messageUtil = require('../util/messageUtil'),
+    async = require('async');
 
 var cantLogin = {
   initCantLoginFlow: function(recipientId) {
@@ -33,7 +33,7 @@ var cantLogin = {
   },
 
   forgotEmail: function(recipientId) {
-    var FORGOT_EMAIL_CONTENT = "I forgot the email address tied to my PayPal account:\n 1. Go to www.paypal.com.\n 2. Click \"Log In\" at the top of the page.\n 3. Click \"Having trouble logging in?\"\n 4. Click \"Forgot?\" next to \"Email.\"\n 5. Select \"I don't know what email address I used and follow the instructions on the screen.\""
+    var FORGOT_EMAIL_CONTENT = "I forgot the email address tied to my PayPal account:\n 1. Go to www.paypal.com.\n 2. Click \"Log In\" at the top of the page.\n 3. Click \"Having trouble logging in?\"\n 4. Click \"Forgot?\" next to \"Email.\"\n 5. Select \"I don't know what email address I used and follow the instructions on the screen.\"";
     messageUtil.sendMessage(recipientId, {
       "text": FORGOT_EMAIL_CONTENT
     });
@@ -41,14 +41,22 @@ var cantLogin = {
   },
 
   forgotPassword: function(recipientId) {
-    var FORGOT_PASSWORD_CONTENT_PT1 = "I know my email address, but I don’t know my password:\n 1. Go to www.paypal.com.\n 2. Click Log In at the top of the page.\n 3. Click Having trouble logging in? (*do NOT close out of this window or you'll need to restart the password reset process.)\n 4. Type the email address you use for PayPal and click Next."
+    var FORGOT_PASSWORD_CONTENT_PT1 = "I know my email address, but I don’t know my password:\n 1. Go to www.paypal.com.\n 2. Click Log In at the top of the page.\n 3. Click Having trouble logging in? (*do NOT close out of this window or you'll need to restart the password reset process.)\n 4. Type the email address you use for PayPal and click Next.";
     var FORGOT_PASSWORD_CONTENT_PT2 = "5. Select Receive an email so we can confirm this is your account, and click Next.\n 6. Enter the 6-digit security code we sent to your email (you many need to check or junk or spam folder) and click Continue.\n 7. Select another way of confirming this is your account, and click Next.\n 8. After going through this last security check, create a new password (type it twice) and click Update.";
-    messageUtil.sendMessage(recipientId, {
-      "text": FORGOT_PASSWORD_CONTENT_PT1
-    });
-    messageUtil.sendMessage(recipientId, {
-      "text": FORGOT_PASSWORD_CONTENT_PT2
-    });
+    async.series([
+      function(cb) {
+        messageUtil.sendMessage(recipientId, {
+          "text": FORGOT_PASSWORD_CONTENT_PT1
+        });
+        cb(null);
+      },
+      function(cb) {
+        messageUtil.sendMessage(recipientId, {
+          "text": FORGOT_PASSWORD_CONTENT_PT2
+        });
+        cb(null);
+      }
+    ]);
   }
 
 };
