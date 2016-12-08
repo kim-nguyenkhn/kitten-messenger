@@ -43,16 +43,19 @@ var cantLogin = {
   forgotPassword: function(recipientId) {
     var FORGOT_PASSWORD_CONTENT_PT1 = "I know my email address, but I don’t know my password:\n 1. Go to www.paypal.com.\n 2. Click Log In at the top of the page.\n 3. Click Having trouble logging in? (*do NOT close out of this window or you'll need to restart the password reset process.)\n 4. Type the email address you use for PayPal and click Next.";
     var FORGOT_PASSWORD_CONTENT_PT2 = "5. Select Receive an email so we can confirm this is your account, and click Next.\n 6. Enter the 6-digit security code we sent to your email (you many need to check or junk or spam folder) and click Continue.\n 7. Select another way of confirming this is your account, and click Next.\n 8. After going through this last security check, create a new password (type it twice) and click Update.";
+    // content getting queued in reverse order because of some known issues below:
+    // see https://developers.facebook.com/bugs/565416400306038
+    // and http://stackoverflow.com/questions/37152355/facebook-messenger-bot-not-sending-messages-in-order
     async.series([
       function(cb) {
         messageUtil.sendMessage(recipientId, {
-          "text": FORGOT_PASSWORD_CONTENT_PT1
+          "text": FORGOT_PASSWORD_CONTENT_PT2
         });
         cb(null);
       },
       function(cb) {
         messageUtil.sendMessage(recipientId, {
-          "text": FORGOT_PASSWORD_CONTENT_PT2
+          "text": FORGOT_PASSWORD_CONTENT_PT1
         });
         cb(null);
       }
