@@ -13,7 +13,8 @@ var cantLogin = {
           "template_type": "generic",
           "elements": [{
             "title": responses.sad.text[0],
-            "image_url": responses.sad.gifs[0]
+            // "image_url": responses.sad.gifs[0]
+            "image_url": "http://i.giphy.com/zcVOyJBHYZvX2.gif"
           }]
         }
       }
