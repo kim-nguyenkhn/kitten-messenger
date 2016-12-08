@@ -23,7 +23,7 @@ request({
     "thread_state":"new_thread",
     "call_to_actions":[
       {
-        "payload":"USER_DEFINED_PAYLOAD"
+        "payload":"PAYLOAD_NEW_THREAD"
       }
     ]
   }
@@ -43,7 +43,7 @@ request({
   json: {
     "setting_type":"greeting",
     "greeting":{
-      "text": "Hi Ashley, I'm PPBot, PayPal's Customer Service Bot."
+      "text": "Hi there - I'm PPBot, PayPal's Customer Service Bot!"
     }
   }
 }, function(error, response, body) {

@@ -35,6 +35,11 @@ router.get('/webhook', function (req, res) {
         }
       } else if (event.postback) {
         console.log("Postback received: " + JSON.stringify(event.postback));
+
+        // TODO: handle event.postback.payload
+        if (event.postback.payload.indexOf('PAYLOAD_NEW_THREAD') > -1) {
+          messageUtil.sendMessage(event.sender.id, {text: "Hi! I'm PPBot. Find out how you can interact with me by typing 'Help'."});
+        }
       }
     }
     res.sendStatus(200);
