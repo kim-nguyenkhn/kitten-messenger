@@ -4,6 +4,34 @@ var messageUtil = require('../util/messageUtil');
 
 
 var cantLogin = {
+  initCantLoginFlow: function() {
+    var INIT_CANT_LOGIN_FLOW_CONTENT = "Sorry to hear that :( Select the option that applies to you below.";
+    messageUtil.sendMessage(event.sender.id, {
+      "attachment": {
+        "type": "template",
+        "payload": {
+          "template_type": "button",
+          "text": INIT_CANT_LOGIN_FLOW_CONTENT,
+          "buttons":[
+            {
+              // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
+              // can't log in https://www.paypal.com/us/selfhelp/article/what-can-i-do-if-i-can't-i-log-in-faq1935/2
+              "type":"postback",
+              "title":"Forgot Email",
+              "payload":"PAYLOAD_FORGOT_EMAIL"
+            },
+            {
+              // how do I send money https://www.paypal.com/us/selfhelp/article/how-do-i-send-money-faq1684/1
+              "type":"postback",
+              "title":"Forgot Password",
+              "payload":"PAYLOAD_FORGOT_PASSWORD"
+            }
+          ]
+        }
+      }
+    });
+  },
+
   forgotEmail: function() {
     var FORGOT_EMAIL_CONTENT = "I forgot the email address tied to my PayPal account:\n 1. Go to www.paypal.com.\n 2. Click \"Log In\" at the top of the page.\n 3. Click \"Having trouble logging in?\"\n 4. Click \"Forgot?\" next to \"Email.\"\n 5. Select \"I don't know what email address I used and follow the instructions on the screen.\""
     messageUtil.sendMessage(event.sender.id, {
