@@ -2,7 +2,8 @@
 
 var messageUtil = require('../util/messageUtil'),
     async = require('async'),
-    responses = require('../config/responses').Responses;
+    responses = require('../config/responses').Responses,
+    random = require('../util/random');
 
 var didThisHelp = {
   askForFeedback: function(recipientId, cb) {
@@ -38,7 +39,7 @@ var didThisHelp = {
           "attachment":{
             "type":"image",
             "payload":{
-              "url": responses.happy.gifs[0]
+              "url": random.getRandomFromArray(responses.happy.gifs)
             }
           }
         }, cb);
@@ -46,7 +47,7 @@ var didThisHelp = {
       // text
       function(cb) {
         messageUtil.sendMessageWithCallback(recipientId, {
-          "text": responses.happy.text[2]
+          "text": random.getRandomFromArray(responses.happy.text)
         }, cb);
       }
     ]);
@@ -63,7 +64,7 @@ var didThisHelp = {
           "attachment":{
             "type":"image",
             "payload":{
-              "url": responses.sad.gifs[0]
+              "url": random.getRandomFromArray(responses.sad.gifs)
             }
           }
         }, cb);
@@ -75,7 +76,7 @@ var didThisHelp = {
             "type":"template",
                "payload":{
                   "template_type":"button",
-                  "text": responses.sad.text[1] + " " + "Would you like to talk to a representative?",
+                  "text": random.getRandomFromArray(responses.sad.text) + " " + "Would you like to talk to a representative?",
                   "buttons":[
                      {
                         "type":"phone_number",

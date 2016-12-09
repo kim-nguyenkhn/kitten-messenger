@@ -3,7 +3,8 @@
 var messageUtil = require('../util/messageUtil'),
     async = require('async'),
     responses = require('../config/responses').Responses,
-    didThisHelp = require('../util/didThisHelp');
+    didThisHelp = require('../util/didThisHelp'),
+    random = require('../util/random');
 
 var cantLogin = {
   initCantLoginFlow: function(recipientId) {
@@ -15,7 +16,7 @@ var cantLogin = {
           "attachment":{
             "type":"image",
             "payload":{
-              "url": responses.sad.gifs[0]
+              "url": random.getRandomFromArray(responses.sad.gifs)
             }
           }
         }, cb);
@@ -24,7 +25,7 @@ var cantLogin = {
       // choose either email or password path
       function(cb) {
         // var INIT_CANT_LOGIN_FLOW_CONTENT = "Sorry to hear that :( Select the option that applies to you below.";
-        var INIT_CANT_LOGIN_FLOW_CONTENT = responses.sad.text[0]+ " " + "Select the option that applies to you below.";
+        var INIT_CANT_LOGIN_FLOW_CONTENT = random.getRandomFromArray(responses.sad.text) + " " + "Select the option that applies to you below.";
         messageUtil.sendMessage(recipientId, {
           "attachment": {
             "type": "template",
