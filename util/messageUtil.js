@@ -231,7 +231,7 @@ var faqMessage = function(recipientId, text) {
 
 var sendHelpMessage = function(recipientId) {
   var HELP_CONTENT = "Hey there, I'm Payton! 👋 I'm here to help you find the answers to your PayPal questions. Select a topic below or ask your question to start :)\nLater, you can type 'Help' to see these options again.";
-  messageUtil.sendMessage(recipientId, {
+  sendMessage(recipientId, {
     "attachment": {
       "type": "template",
       "payload": {
