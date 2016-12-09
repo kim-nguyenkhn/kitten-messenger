@@ -7,6 +7,42 @@ var request = require('request'),
     natural = require('natural'),
     TfIdf = natural.TfIdf;
 
+var setTypingOn = function(recipientId) {
+  request({
+    url: config.baseUrls.facebookGraph + '/v2.6/me/messages',
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+    method: 'POST',
+    json: {
+      recipient: {id: recipientId},
+      sender_action: 'typing_on'
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+};
+
+var setTypingOff = function(recipientId) {
+  request({
+    url: config.baseUrls.facebookGraph + '/v2.6/me/messages',
+    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
+    method: 'POST',
+    json: {
+      recipient: {id: recipientId},
+      sender_action: 'typing_off'
+    }
+  }, function(error, response, body) {
+    if (error) {
+      console.log('Error sending message: ', error);
+    } else if (response.body.error) {
+      console.log('Error: ', response.body.error);
+    }
+  });
+};
+
 // generic function sending messages
 var sendMessage = function(recipientId, message) {
   request({
@@ -44,43 +80,7 @@ var sendMessageWithCallback = function(recipientId, message, cb) {
       // adding a humanistic delay on the messages
       setTimeout(function(){
         cb(null, body);
-      }, 3000);
-    }
-  });
-};
-
-var setTypingOn = function(recipientId) {
-  request({
-    url: config.baseUrls.facebookGraph + '/v2.6/me/messages',
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    method: 'POST',
-    json: {
-      recipient: {id: recipientId},
-      sender_action: 'typing_on'
-    }
-  }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-    } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
-    }
-  });
-};
-
-var setTypingOff = function(recipientId, message) {
-  request({
-    url: config.baseUrls.facebookGraph + '/v2.6/me/messages',
-    qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
-    method: 'POST',
-    json: {
-      recipient: {id: recipientId},
-      sender_action: 'typing_off'
-    }
-  }, function(error, response, body) {
-    if (error) {
-      console.log('Error sending message: ', error);
-    } else if (response.body.error) {
-      console.log('Error: ', response.body.error);
+      }, 1500);
     }
   });
 };
@@ -97,7 +97,7 @@ var communitySearchMessage = function(recipientId, message) {
     }
   }, function(error, response, body) {
     // typing bubbles on
-    setTypingOn(recipientId, message);
+    setTypingOn(recipientId);
 
     setTimeout(function() {
       if (error) {
@@ -139,7 +139,7 @@ var communitySearchMessage = function(recipientId, message) {
 
         // sendMessage(recipientId, { text: results });
       }
-      setTypingOff(recipientId, message);
+      setTypingOff(recipientId);
 
     }, 5000);
 
