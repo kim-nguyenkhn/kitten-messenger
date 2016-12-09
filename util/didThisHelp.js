@@ -6,6 +6,7 @@ var messageUtil = require('../util/messageUtil'),
 
 var didThisHelp = {
   askForFeedback: function(recipientId, cb) {
+    // text with 2 buttons -- yes/no
     messageUtil.sendMessageWithCallback(recipientId, {
       "attachment":{
         "type":"template",
@@ -31,6 +32,7 @@ var didThisHelp = {
 
   didHelp: function(recipientId) {
     async.series([
+      // gif
       function(cb) {
         messageUtil.sendMessageWithCallback(recipientId, {
           "attachment":{
@@ -41,6 +43,7 @@ var didThisHelp = {
           }
         }, cb);
       },
+      // text
       function(cb) {
         messageUtil.sendMessageWithCallback(recipientId, {
           "text": responses.happy.text[2]
@@ -54,6 +57,7 @@ var didThisHelp = {
   // FAILED TO HELP
   didNotHelp: function(recipientId) {
     async.series([
+      // reaction - gif
       function(cb) {
         messageUtil.sendMessageWithCallback(recipientId, {
           "attachment":{
@@ -64,6 +68,7 @@ var didThisHelp = {
           }
         }, cb);
       },
+      // suggestion text - talk to a rep
       function(cb) {
         messageUtil.sendMessageWithCallback(recipientId, {
           "attachment":{

@@ -7,41 +7,51 @@ var messageUtil = require('../util/messageUtil'),
 
 var cantLogin = {
   initCantLoginFlow: function(recipientId) {
-    messageUtil.sendMessage(recipientId, {
-      "attachment":{
-        "type":"image",
-        "payload":{
-          "url": responses.sad.gifs[0]
-        }
-      }
-    });
+    async.series([
 
-    // var INIT_CANT_LOGIN_FLOW_CONTENT = "Sorry to hear that :( Select the option that applies to you below.";
-    var INIT_CANT_LOGIN_FLOW_CONTENT = responses.sad.text[0]+ " " + "Select the option that applies to you below.";
-    messageUtil.sendMessage(recipientId, {
-      "attachment": {
-        "type": "template",
-        "payload": {
-          "template_type": "button",
-          "text": INIT_CANT_LOGIN_FLOW_CONTENT,
-          "buttons":[
-            {
-              // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
-              // can't log in https://www.paypal.com/us/selfhelp/article/what-can-i-do-if-i-can't-i-log-in-faq1935/2
-              "type":"postback",
-              "title":"Forgot Email",
-              "payload":"PAYLOAD_FORGOT_EMAIL"
-            },
-            {
-              // how do I send money https://www.paypal.com/us/selfhelp/article/how-do-i-send-money-faq1684/1
-              "type":"postback",
-              "title":"Forgot Password",
-              "payload":"PAYLOAD_FORGOT_PASSWORD"
+      // gif reaction
+      function(cb) {
+        messageUtil.sendMessageWithCallback(recipientId, {
+          "attachment":{
+            "type":"image",
+            "payload":{
+              "url": responses.sad.gifs[0]
             }
-          ]
-        }
+          }
+        });
+      },
+
+      // choose either email or password path
+      function(cb) {
+        // var INIT_CANT_LOGIN_FLOW_CONTENT = "Sorry to hear that :( Select the option that applies to you below.";
+        var INIT_CANT_LOGIN_FLOW_CONTENT = responses.sad.text[0]+ " " + "Select the option that applies to you below.";
+        messageUtil.sendMessage(recipientId, {
+          "attachment": {
+            "type": "template",
+            "payload": {
+              "template_type": "button",
+              "text": INIT_CANT_LOGIN_FLOW_CONTENT,
+              "buttons":[
+                {
+                  // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
+                  // can't log in https://www.paypal.com/us/selfhelp/article/what-can-i-do-if-i-can't-i-log-in-faq1935/2
+                  "type":"postback",
+                  "title":"Forgot Email",
+                  "payload":"PAYLOAD_FORGOT_EMAIL"
+                },
+                {
+                  // how do I send money https://www.paypal.com/us/selfhelp/article/how-do-i-send-money-faq1684/1
+                  "type":"postback",
+                  "title":"Forgot Password",
+                  "payload":"PAYLOAD_FORGOT_PASSWORD"
+                }
+              ]
+            }
+          }
+        });
       }
-    });
+    ]);
+
   },
 
   forgotEmail: function(recipientId) {
