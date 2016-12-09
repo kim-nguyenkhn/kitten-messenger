@@ -18,7 +18,7 @@ var cantLogin = {
               "url": responses.sad.gifs[0]
             }
           }
-        });
+        }, cb);
       },
 
       // choose either email or password path
@@ -48,7 +48,7 @@ var cantLogin = {
               ]
             }
           }
-        });
+        }, cb);
       }
     ]);
 
