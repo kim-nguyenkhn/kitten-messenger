@@ -7,6 +7,7 @@ var express = require('express'),
     cantLogin = require('../util/cantLogin'),
     didThisHelp = require('../util/didThisHelp'),
     sendMoney = require('../util/sendMoney'),
+    editAccount = require('../util/editAccount'),
     config = require('../config/config');
 
 // middleware that is specific to this router
@@ -105,9 +106,7 @@ router.get('/webhook', function (req, res) {
 
         // edit account info
         if (event.postback.payload.indexOf('PAYLOAD_EDIT_ACCOUNT_INFO') > -1) {
-          messageUtil.sendMessage(event.sender.id, {
-
-          });
+          editAccount.initEditAccountFlow(event.sender.id);
         }
 
         // did help
