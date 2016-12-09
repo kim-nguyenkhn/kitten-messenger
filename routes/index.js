@@ -6,6 +6,7 @@ var express = require('express'),
     messageUtil = require('../util/messageUtil'),
     cantLogin = require('../util/cantLogin'),
     didThisHelp = require('../util/didThisHelp'),
+    sendMoney = require('../util/sendMoney'),
     config = require('../config/config');
 
 // middleware that is specific to this router
@@ -55,7 +56,7 @@ router.get('/webhook', function (req, res) {
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": "Hi, I'm Payton! Find out how you can interact with me by typing 'Help'.",
+                "text": "Hi, I'm Payton! 👋 Find out how you can interact with me by typing 'Help'.",
                 "buttons":[
                   {
                     // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
@@ -98,9 +99,7 @@ router.get('/webhook', function (req, res) {
 
         // send money
         if (event.postback.payload.indexOf('PAYLOAD_SEND_MONEY') > -1) {
-          messageUtil.sendMessage(event.sender.id, {
-
-          });
+          sendMoney.initSendMoneyFlow(event.sender.id);
         }
 
 

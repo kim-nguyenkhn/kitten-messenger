@@ -56,11 +56,19 @@ var cantLogin = {
   },
 
   forgotEmail: function(recipientId) {
-    var FORGOT_EMAIL_CONTENT = "I forgot the email address tied to my PayPal account:\n 1. Go to www.paypal.com.\n 2. Click \"Log In\" at the top of the page.\n 3. Click \"Having trouble logging in?\"\n 4. Click \"Forgot?\" next to \"Email.\"\n 5. Select \"I don't know what email address I used and follow the instructions on the screen.\"";
-    messageUtil.sendMessage(recipientId, {
-      "text": FORGOT_EMAIL_CONTENT
-    });
-
+    async.series([
+      // recover email stuff
+      function(cb) {
+        var FORGOT_EMAIL_CONTENT = "Here are the steps that I found:\n 1. Go to www.paypal.com.\n 2. Click \"Log In\" at the top of the page.\n 3. Click \"Having trouble logging in?\"\n 4. Click \"Forgot?\" next to \"Email.\"\n 5. Select \"I don't know what email address I used and follow the instructions on the screen.\"";
+        messageUtil.sendMessage(recipientId, {
+          "text": FORGOT_EMAIL_CONTENT
+        });
+      },
+      // ask for feedback
+      function(cb) {
+        didThisHelp.askForFeedback(recipientId, cb);
+      }
+    ]);
   },
 
   forgotPassword: function(recipientId) {
