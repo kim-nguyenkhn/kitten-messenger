@@ -24,12 +24,17 @@ var editAccount = {
 
       // give instructions on how to edit account details
       function(cb) {
-        var EDIT_ACCOUNT_CONTENT_PT1 = random.getRandomFromArray(responses.smart.text) + " " + "Here are the steps that I found:\n 1. Log in to your PayPal account.\n 2. Click the Profile icon next to \"Log out.\"\n 3. To change any of your personal information, click any option and follow the steps provided.";
+        var EDIT_ACCOUNT_CONTENT_PT1 = random.getRandomFromArray(responses.smart.text) + " " + "Here are the steps that I found:\n 1. Log in to your PayPal account.\n 2. Click the Profile icon next to \"Log out.\"\n 3. To change any of your personal information, click any option and follow the steps provided.\n";
 
         async.series([
           function(cb) {
             messageUtil.sendMessageWithCallback(recipientId, {
               "text": EDIT_ACCOUNT_CONTENT_PT1
+            }, cb);
+          },
+          function(cb) {
+            messageUtil.sendMessageWithCallback(recipientId, {
+              "text": responses.forMore.editAccount
             }, cb);
           },
           function(cb) {

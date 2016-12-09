@@ -1,5 +1,10 @@
 {
   "Responses": {
+    "forMore": {
+      "cantLogin": "For more information, click here: https://www.paypal.com/us/selfhelp/article/what-can-i-do-if-i-can't-i-log-in-faq1935/1",
+      "sendMoney": "For more information, click here: https://www.paypal.com/us/selfhelp/article/how-do-i-send-money-faq1684/1",
+      "editAccount": "For more information, click here: https://www.paypal.com/us/selfhelp/article/how-do-i-view-or-edit-my-account-information-faq772/2"
+    },
     "happy": {
       "gifs": [
         "http://i.giphy.com/LZElUsjl1Bu6c.gif",

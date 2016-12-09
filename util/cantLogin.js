@@ -85,7 +85,13 @@ var cantLogin = {
         messageUtil.sendMessageWithCallback(recipientId, {
           "text": FORGOT_PASSWORD_CONTENT_PT2
         }, cb);
-      }, function(cb) {
+      },
+      function(cb) {
+        messageUtil.sendMessageWithCallback(recipientId, {
+          "text": responses.forMore.cantLogin
+        }, cb);
+      },
+      function(cb) {
         didThisHelp.askForFeedback(recipientId, cb);
       }
     ]);
