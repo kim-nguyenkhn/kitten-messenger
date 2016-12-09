@@ -82,20 +82,19 @@ router.get('/webhook', function (req, res) {
           });
         }
 
-        //
+        // can't login
         if (event.postback.payload.indexOf('PAYLOAD_CANT_LOGIN') > -1) {
           cantLogin.initCantLoginFlow(event.sender.id);
         }
-
         // forgot email
         if (event.postback.payload.indexOf('PAYLOAD_FORGOT_EMAIL') > -1) {
           cantLogin.forgotEmail(event.sender.id);
         }
-
         // forgot password
         if (event.postback.payload.indexOf('PAYLOAD_FORGOT_PASSWORD') > -1) {
           cantLogin.forgotPassword(event.sender.id);
         }
+
 
         // send money
         if (event.postback.payload.indexOf('PAYLOAD_SEND_MONEY') > -1) {
@@ -104,6 +103,7 @@ router.get('/webhook', function (req, res) {
           });
         }
 
+
         // edit account info
         if (event.postback.payload.indexOf('PAYLOAD_EDIT_ACCOUNT_INFO') > -1) {
           messageUtil.sendMessage(event.sender.id, {
@@ -111,6 +111,14 @@ router.get('/webhook', function (req, res) {
           });
         }
 
+        // did help
+        if (event.postback.payload.indexOf('PAYLOAD_DIDTHISHELP_YES') > -1) {
+          didThisHelp.didHelp(event.sender.id);
+        }
+        // did not help
+        if (event.postback.payload.indexOf('PAYLOAD_DIDTHISHELP_NO') > -1) {
+          didThisHelp.didNotHelp(event.sender.id);
+        }
 
 
       }
