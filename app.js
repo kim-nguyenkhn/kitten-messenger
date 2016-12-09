@@ -43,7 +43,7 @@ request({
   json: {
     "setting_type":"greeting",
     "greeting":{
-      "text": "Hi there - I'm PPBot, PayPal's Customer Service Bot!"
+      "text": "Hi there - I'm Payton, PayPal's Customer Service Bot!"
     }
   }
 }, function(error, response, body) {
@@ -67,11 +67,6 @@ request({
         "type":"postback",
         "title":"Help",
         "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_HELP"
-      },
-      {
-        "type":"postback",
-        "title":"About PPBot",
-        "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_START_ORDER"
       },
       {
         "type":"web_url",

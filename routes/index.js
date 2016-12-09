@@ -55,7 +55,7 @@ router.get('/webhook', function (req, res) {
               "type": "template",
               "payload": {
                 "template_type": "button",
-                "text": "Hi, I'm PPBot! Find out how you can interact with me by typing 'Help'.",
+                "text": "Hi, I'm Payton! Find out how you can interact with me by typing 'Help'.",
                 "buttons":[
                   {
                     // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
