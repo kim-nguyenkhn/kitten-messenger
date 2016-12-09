@@ -26,6 +26,7 @@ var sendMessage = function(recipientId, message) {
   });
 };
 var sendMessageWithCallback = function(recipientId, message, cb) {
+  setTypingOn(recipientId);
   request({
     url: config.baseUrls.facebookGraph + '/v2.6/me/messages',
     qs: {access_token: process.env.PAGE_ACCESS_TOKEN},
@@ -40,12 +41,15 @@ var sendMessageWithCallback = function(recipientId, message, cb) {
     } else if (response.body.error) {
       console.log('Error: ', response.body.error);
     } else {
-      cb(null, body);
+      // adding a humanistic delay on the messages
+      setTimeout(function(){
+        cb(null, body);
+      }, 3000);
     }
   });
 };
 
-var setTypingOn = function(recipientId, message) {
+var setTypingOn = function(recipientId) {
   request({
     url: config.baseUrls.facebookGraph + '/v2.6/me/messages',
     qs: {access_token: process.env.PAGE_ACCESS_TOKEN},

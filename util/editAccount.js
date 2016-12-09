@@ -6,7 +6,7 @@ var messageUtil = require('../util/messageUtil'),
     didThisHelp = require('../util/didThisHelp'),
     random = require('../util/random');
 
-var sendMoney = {
+var editAccount = {
   initEditAccountFlow: function(recipientId) {
     async.series([
 
@@ -38,8 +38,8 @@ var sendMoney = {
         ]);
       }
     ]);
-
   }
+
 };
 
-module.exports = sendMoney;
+module.exports = editAccount;
