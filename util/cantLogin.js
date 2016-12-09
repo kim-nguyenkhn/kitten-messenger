@@ -64,6 +64,11 @@ var cantLogin = {
           "text": FORGOT_EMAIL_CONTENT
         }, cb);
       },
+      function(cb) {
+        messageUtil.sendMessageWithCallback(recipientId, {
+          "text": responses.forMore.cantLogin
+        }, cb);
+      },
       // ask for feedback
       function(cb) {
         didThisHelp.askForFeedback(recipientId, cb);
