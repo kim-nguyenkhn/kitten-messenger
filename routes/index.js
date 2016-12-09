@@ -66,15 +66,16 @@ router.get('/webhook', function (req, res) {
       if (event.message && event.message.text) {
 
         //HELP MESSAGE
-        if (event.message.text.indexOf('help') >= 0) {
+        if (event.message.text.toLowerCase().indexOf('help') >= 0 || event.message.text.toLowerCase().indexOf('halp') >= 0) {
           sendHelpMessage(event.sender.id);
         }
 
+        //
         if (event.message.text.length >= 3 && event.message.text.toLowerCase().startsWith('pp')) {
           messageUtil.communitySearchMessage(event.sender.id, event.message.text);
         }
         else if (!messageUtil.kittenMessage(event.sender.id, event.message.text)) {
-            messageUtil.sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
+            // messageUtil.sendMessage(event.sender.id, {text: "Echo: " + event.message.text});
             // messageUtil.faqMessage(event.sender.id, event.message.text);
         }
       } else if (event.postback) {
