@@ -46,8 +46,28 @@ var didThisHelp = {
       },
       // text
       function(cb) {
+        var ANYTHING_ELSE_CONTENT = random.getRandomFromArray(responses.happy.text) + "\n Is there anything else I can help you with?";
         messageUtil.sendMessageWithCallback(recipientId, {
-          "text": random.getRandomFromArray(responses.happy.text)
+          "attachment":{
+            "type":"template",
+            "payload":{
+              "template_type":"button",
+              "text": ANYTHING_ELSE_CONTENT,
+              "buttons":[
+                {
+                  "type":"postback",
+                  "title":"Yes!",
+                  "payload":"PAYLOAD_ANYTHINGELSE_YES"
+                },
+                {
+                  "type":"postback",
+                  "title":"No, thank you!",
+                  "payload":"PAYLOAD_ANYTHINGELSE_NO"
+                }
+              ]
+            }
+          }
+
         }, cb);
       }
     ]);
@@ -89,7 +109,17 @@ var didThisHelp = {
         }, cb);
       }
     ]);
+  },
+
+  anythingElseYes: function(recipientId) {
+    messageUtil.sendHelpMessage(recipientId);
+  },
+
+  anythingElseNo: function(recipientId) {
+    messageUtil.sendMessage(recipientId, {text: "Awesome! Have a nice day! ^_^"});
   }
+
+
 };
 
 module.exports = didThisHelp;

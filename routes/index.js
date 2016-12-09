@@ -10,39 +10,6 @@ var express = require('express'),
     editAccount = require('../util/editAccount'),
     config = require('../config/config');
 
-function sendHelpMessage(recipientId) {
-  messageUtil.sendMessage(recipientId, {
-    "attachment": {
-      "type": "template",
-      "payload": {
-        "template_type": "button",
-        "text": "Hey there, I'm Payton! 👋 Find out how you can interact with me by typing 'Help'.",
-        "buttons":[
-          {
-            // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
-            // can't log in https://www.paypal.com/us/selfhelp/article/what-can-i-do-if-i-can't-i-log-in-faq1935/2
-            "type":"postback",
-            "title":"I can't log in",
-            "payload":"PAYLOAD_CANT_LOGIN"
-          },
-          {
-            // how do I send money https://www.paypal.com/us/selfhelp/article/how-do-i-send-money-faq1684/1
-            "type":"postback",
-            "title":"How to send money",
-            "payload":"PAYLOAD_SEND_MONEY"
-          },
-          {
-            // View or edit account info https://www.paypal.com/us/selfhelp/article/how-do-i-view-or-edit-my-account-information-faq772
-            "type":"postback",
-            "title":"Change account info",
-            "payload":"PAYLOAD_EDIT_ACCOUNT_INFO"
-          }
-        ]
-      }
-    }
-  });
-}
-
 // middleware that is specific to this router
 router.use(function timeLog (req, res, next) {
   console.log('Time: ', Date.now());
@@ -67,7 +34,7 @@ router.get('/webhook', function (req, res) {
 
         //HELP MESSAGE
         if (event.message.text.toLowerCase().indexOf('help') >= 0 || event.message.text.toLowerCase().indexOf('halp') >= 0) {
-          sendHelpMessage(event.sender.id);
+          messageUtil.sendHelpMessage(event.sender.id);
         }
 
         //
@@ -91,7 +58,7 @@ router.get('/webhook', function (req, res) {
           //   userDetails = body;
           //   console.log('userDetails', userDetails);
           // });
-          sendHelpMessage(event.sender.id);
+          messageUtil.sendHelpMessage(event.sender.id);
         }
 
         // can't login
@@ -128,7 +95,14 @@ router.get('/webhook', function (req, res) {
           didThisHelp.didNotHelp(event.sender.id);
         }
 
-
+        // PAYLOAD_ANYTHINGELSE_YES
+        if (event.postback.payload.indexOf('PAYLOAD_ANYTHINGELSE_YES') > -1) {
+          didThisHelp.anythingElseYes(event.sender.id);
+        }
+        // PAYLOAD_ANYTHINGELSE_NO
+        if (event.postback.payload.indexOf('PAYLOAD_ANYTHINGELSE_NO') > -1) {
+          didThisHelp.anythingElseNo(event.sender.id);
+        }
       }
     }
     res.sendStatus(200);

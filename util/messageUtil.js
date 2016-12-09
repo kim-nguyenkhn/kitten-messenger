@@ -229,10 +229,45 @@ var faqMessage = function(recipientId, text) {
   sendMessage(recipientId, message);
 };
 
+var sendHelpMessage = function(recipientId) {
+  var HELP_CONTENT = "Hey there, I'm Payton! 👋 I'm here to help you find the answers to your PayPal questions. Select a topic below or ask your question to start :)\nLater, you can type 'Help' to see these options again.";
+  messageUtil.sendMessage(recipientId, {
+    "attachment": {
+      "type": "template",
+      "payload": {
+        "template_type": "button",
+        "text": HELP_CONTENT,
+        "buttons":[
+          {
+            // forgot my password https://www.paypal.com/us/selfhelp/article/i-forgot-my-password.-how-do-i-reset-it-faq1933/1
+            // can't log in https://www.paypal.com/us/selfhelp/article/what-can-i-do-if-i-can't-i-log-in-faq1935/2
+            "type":"postback",
+            "title":"I can't log in",
+            "payload":"PAYLOAD_CANT_LOGIN"
+          },
+          {
+            // how do I send money https://www.paypal.com/us/selfhelp/article/how-do-i-send-money-faq1684/1
+            "type":"postback",
+            "title":"How to send money",
+            "payload":"PAYLOAD_SEND_MONEY"
+          },
+          {
+            // View or edit account info https://www.paypal.com/us/selfhelp/article/how-do-i-view-or-edit-my-account-information-faq772
+            "type":"postback",
+            "title":"Change account info",
+            "payload":"PAYLOAD_EDIT_ACCOUNT_INFO"
+          }
+        ]
+      }
+    }
+  });
+};
+
 module.exports = {
   sendMessage: sendMessage,
   sendMessageWithCallback: sendMessageWithCallback,
   kittenMessage: kittenMessage,
   faqMessage: faqMessage,
-  communitySearchMessage: communitySearchMessage
+  communitySearchMessage: communitySearchMessage,
+  sendHelpMessage: sendHelpMessage
 };
