@@ -79,6 +79,7 @@ var sendMessageWithCallback = function(recipientId, message, cb) {
     } else {
       // adding a humanistic delay on the messages
       setTimeout(function(){
+        setTypingOff(recipientId);
         cb(null, body);
       }, 1500);
     }

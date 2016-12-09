@@ -60,9 +60,9 @@ var cantLogin = {
       // recover email stuff
       function(cb) {
         var FORGOT_EMAIL_CONTENT = random.getRandomFromArray(responses.smart.text) + " " + "Here are the steps that I found:\n 1. Go to www.paypal.com.\n 2. Click \"Log In\" at the top of the page.\n 3. Click \"Having trouble logging in?\"\n 4. Click \"Forgot?\" next to \"Email.\"\n 5. Select \"I don't know what email address I used and follow the instructions on the screen.\"";
-        messageUtil.sendMessage(recipientId, {
+        messageUtil.sendMessageWithCallback(recipientId, {
           "text": FORGOT_EMAIL_CONTENT
-        });
+        }, cb);
       },
       // ask for feedback
       function(cb) {
