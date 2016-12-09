@@ -46,7 +46,7 @@ var didThisHelp = {
       },
       // text
       function(cb) {
-        var ANYTHING_ELSE_CONTENT = random.getRandomFromArray(responses.happy.text) + "\n Is there anything else I can help you with?";
+        var ANYTHING_ELSE_CONTENT = random.getRandomFromArray(responses.happy.text) + "\nIs there anything else I can help you with?";
         messageUtil.sendMessageWithCallback(recipientId, {
           "attachment":{
             "type":"template",

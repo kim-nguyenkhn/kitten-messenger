@@ -59,7 +59,7 @@ var cantLogin = {
     async.series([
       // recover email stuff
       function(cb) {
-        var FORGOT_EMAIL_CONTENT = random.getRandomFromArray(responses.smart.text) + " " + "Here are the steps that I found:\n 1. Go to www.paypal.com.\n 2. Click \"Log In\" at the top of the page.\n 3. Click \"Having trouble logging in?\"\n 4. Click \"Forgot?\" next to \"Email.\"\n 5. Select \"I don't know what email address I used and follow the instructions on the screen.\"";
+        var FORGOT_EMAIL_CONTENT = random.getRandomFromArray(responses.smart.text) + " " + "Here are the steps that I found:\n1. Go to www.paypal.com.\n2. Click \"Log In\" at the top of the page.\n3. Click \"Having trouble logging in?\"\n4. Click \"Forgot?\" next to \"Email.\"\n5. Select \"I don't know what email address I used and follow the instructions on the screen.\"";
         messageUtil.sendMessageWithCallback(recipientId, {
           "text": FORGOT_EMAIL_CONTENT
         }, cb);
@@ -72,8 +72,8 @@ var cantLogin = {
   },
 
   forgotPassword: function(recipientId) {
-    var FORGOT_PASSWORD_CONTENT_PT1 = random.getRandomFromArray(responses.smart.text) + " " + "Here are the steps that I found:\n 1. Go to www.paypal.com.\n 2. Click Log In at the top of the page.\n 3. Click Having trouble logging in? (*do NOT close out of this window or you'll need to restart the password reset process.)\n 4. Type the email address you use for PayPal and click Next.";
-    var FORGOT_PASSWORD_CONTENT_PT2 = "5. Select Receive an email so we can confirm this is your account, and click Next.\n 6. Enter the 6-digit security code we sent to your email (you many need to check or junk or spam folder) and click Continue.\n 7. Select another way of confirming this is your account, and click Next.\n 8. After going through this last security check, create a new password (type it twice) and click Update.";
+    var FORGOT_PASSWORD_CONTENT_PT1 = random.getRandomFromArray(responses.smart.text) + " " + "Here are the steps that I found:\n1. Go to www.paypal.com.\n2. Click Log In at the top of the page.\n3. Click Having trouble logging in? (*do NOT close out of this window or you'll need to restart the password reset process.)\n4. Type the email address you use for PayPal and click Next.";
+    var FORGOT_PASSWORD_CONTENT_PT2 = "5. Select Receive an email so we can confirm this is your account, and click Next.\n6. Enter the 6-digit security code we sent to your email (you many need to check or junk or spam folder) and click Continue.\n7. Select another way of confirming this is your account, and click Next.\n8. After going through this last security check, create a new password (type it twice) and click Update.";
 
     async.series([
       function(cb) {
