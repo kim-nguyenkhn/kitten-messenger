@@ -1,5 +1,5 @@
 # kitten-messenger
-Proof of concept for a Facebook Messenger bot.
+Proof of concept for a Facebook Messenger bot. Forked off of https://github.com/fbsamples/messenger-platform-samples.
 
 ```
 <any_message> - Repeats back to you.
